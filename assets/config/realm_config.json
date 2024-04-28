@@ -1,0 +1,9 @@
+{
+    "appId": "wingmanbd-user-tgcit",
+    "appUrl": "https://realm.mongodb.com/groups/64b7ab121403c86627cfb676/apps/64b7ad32e7c46d5b05c3f089",
+    "baseUrl": "https://realm.mongodb.com",
+    "clientApiBaseUrl": "https://ap-south-1.aws.realm.mongodb.com",
+    "dataApiBaseUrl": "https://ap-south-1.aws.data.mongodb-api.com",
+    "dataExplorerLink": "https://cloud.mongodb.com/links/64b7ab121403c86627cfb676/explorer/WingManBD/database/collection/find",
+    "dataSourceName": "mongodb-atlas"
+}

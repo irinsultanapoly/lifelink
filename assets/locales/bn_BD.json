@@ -1,0 +1,186 @@
+{
+    "app": {
+        "name": "WingMan BD",
+        "under_development": "Under development",
+        "coming_soon": "Coming soon..."
+    },
+    "auth": {
+        "welcome": "বাগানীতে আপনাকে স্বাগতম!",
+        "label": {
+            "name": "নাম",
+            "mobile": "মোবাইল নং",
+            "password": "পাসওয়ার্ড",
+            "confirm_password": "Confirm password",
+            "group": "Blood Group:"
+        },
+        "button": {
+            "sign_in": "সাইন ইন",
+            "sign_up": "সাইন আপ"
+        },
+        "instruction": {
+            "sign_up_part1": "এখনও যোগদান করেননি?",
+            "sign_up_part2": "এখনই সাইন আপ করুন",
+            "sign_in_part1": "ইতিমধ্যে একটি অ্যাকাউন্ট আছে?",
+            "sign_in_part2": "সাইন ইন করুন"
+        },
+        "error": {
+            "name": "নাম দিন!",
+            "mobile": "অবৈধ মোবাইল নম্বর!",
+            "password": {
+                "length": "সর্বনিম্ন দৈর্ঘ্য ৮!",
+                "not_matched": "পাসওয়ার্ড মিলেনি!",
+                "wrong": "ভুল পাসওয়ার্ড!"
+            },
+            "no_account": "এই মোবাইল নম্বরের সাথে কোনও অ্যাকাউন্ট পাওয়া যায় নি!",
+            "sign_in": "Incorrect mobile number or password!",
+            "sign_up": "Account already exist with this mobile",
+            "group": "You must select your blood group"
+        }
+    },
+    "otp": {
+        "title": "Verify OTP",
+        "message": "Your verification code is @code",
+        "status": {
+            "sending": "Sending an OTP to @mobile",
+            "sent": "OTP has been sent to @mobile"
+        },
+        "label": {
+            "enter_otp": "Enter 4 Digit OTP"
+        },
+        "button": {
+            "continue": "CONTINUE"
+        },
+        "error": {
+            "invalid_number": "Invalid number @mobile! Please check again.",
+            "limit_exceeds": "Maximum limit exceeds! Please try again after @time",
+            "unknown": "Something went wrong! Try again..."
+        }
+    },
+    "dashboard": {
+        "hello_user": "Hello @name",
+        "welcome_user": "Welcome to WingMan BD!",
+        "total_items": "@count donations"
+    },
+    "setting": {
+        "title": "Settings",
+        "item": {
+            "profile": "Profile",
+            "donation_history": "Your Donations",
+            "donation_request_history": "Your Requests",
+            "license": "App Licenses",
+            "feedback": "Give Feedback",
+            "language": "App Language",
+            "version": "Version"
+        }
+    },
+    "profile": {
+        "title": "Profile",
+        "item": {
+            "address_book": "Address Book",
+            "change_group": "Change Blood Group",
+            "change_mobile": "Change Mobile",
+            "change_password": "Change Password",
+            "logout": "Logout"
+        },
+        "label": {
+            "name": "Name",
+            "email": "Email"
+        },
+        "error": {
+            "name": "Loading...",
+            "mobile": "Loading...",
+            "email": "No email address provided yet!"
+        }
+    },
+    "address": {
+        "title": "Address",
+        "label": {
+            "name": "Name: ",
+            "mobile": "Mobile: ",
+            "division": "Division: ",
+            "city": "City: ",
+            "area": "Area: ",
+            "addressLine": "Address Line: ",
+            "label": "Label: ",
+            "make_default": "Make this your default address"
+        },
+        "button": {
+            "save": "Save",
+            "delete": "Delete"
+        },
+        "error": {
+            "name": "Provide a name",
+            "mobile": "Invalid mobile number!",
+            "addressLine": "Invalid address!",
+            "division": "Please select a division",
+            "city": "Please select a city",
+            "area": "Please select a area"
+        },
+        "dialog": {
+            "group": {
+                "title": "Are you sure?",
+                "desc": "Changing your blood type can affect blood donation safety. Be accurate and seek medical advice if unsure."
+            }
+        },
+        "snack": {
+            "group": {
+                "title": "Blood Group successfully changed.",
+                "msg": "Thank you for updating your information."
+            },
+            "profile": {
+                "title": "Profile successfully updated.",
+                "msg": "Thank you for updating your information."
+            }
+        }
+    },
+    "donation_history": {
+        "title": "Past Donations",
+        "item": {
+            "label": {
+                "seeker_name": "Patient:",
+                "problem": "Problem:",
+                "quantity": "Quantity:",
+                "address": "Address:",
+                "group": "Blood Group:",
+                "type": "Type:"
+            }
+        }
+    },
+    "donation": {
+        "title": "Donation",
+        "label": {
+            "user": {
+                "info": {
+                    "seeker": "Seeker Info:",
+                    "donor": "Donor Info:"
+                },
+                "name": "Name:",
+                "mobile": "Mobile:",
+                "mobile_alt": "Alt Mobile:"
+            },
+            "details": "Details:",
+            "group": "Group:",
+            "type": "Type:",
+            "quantity": "Quantity:",
+            "problem": "Patient Problem:",
+            "address_line": "AddressLine:"
+        }
+    },
+    "donation_request": {
+        "title": "Request Blood",
+        "item": {
+            "label": {
+                "type": "Request Type:",
+                "group": "Blood Group:",
+                "quantity": "Blood Units Required:",
+                "problem": "Patient Problem:",
+                "is_critical": "Is Critical?",
+                "name": "Patient Name:",
+                "hospital": "Hospital Name:",
+                "bed": "Ward & Bed Number:",
+                "contact": "Contact Number:",
+                "time": "Time for Donation:"
+            }
+        }
+    }
+}
