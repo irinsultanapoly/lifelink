@@ -10,6 +10,12 @@ abstract class Routes {
   static const AUTH = _Paths.AUTH;
   static const DASHBOARD = _Paths.DASHBOARD;
   static const SETTING = _Paths.SETTING;
+  static const PROFILE = _Paths.PROFILE;
+  static const ADDRESS = _Paths.ADDRESS;
+  static const LANGUAGE = _Paths.LANGUAGE;
+  static const DONATION = _Paths.DONATION;
+  static const DONATION_HISTORY = _Paths.DONATION_HISTORY;
+  static const DONATION_REQUEST = _Paths.DONATION_REQUEST;
 }
 
 abstract class _Paths {
@@ -19,5 +25,10 @@ abstract class _Paths {
   static const AUTH = '/auth';
   static const DASHBOARD = '/dashboard';
   static const SETTING = '/setting';
-  static const FEEDBACK = '/feedback';
+  static const PROFILE = '/profile';
+  static const ADDRESS = '/address';
+  static const LANGUAGE = '/language';
+  static const DONATION = '/donation';
+  static const DONATION_HISTORY = '/donation-history';
+  static const DONATION_REQUEST = '/donation-request';
 }

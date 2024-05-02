@@ -1,3 +1,4 @@
+import 'package:lifelink/app/extensions/string_ext.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:super_ui_kit/super_ui_kit.dart';
 
@@ -6,6 +7,7 @@ import '../../../routes/app_pages.dart';
 class SettingController extends GetxController {
 
   final appVersion = ''.obs;
+  var currentLang = Get.locale?.languageCode.getLanguageFromCode().obs;
 
   @override
   void onReady() {
