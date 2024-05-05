@@ -1,6 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:lifelink/app/modules/donation/views/donation_view.dart';
+import 'package:lifelink/app/modules/donation_dashboard/views/donation_dashboard_view.dart';
+import 'package:lifelink/app/modules/donation_history/views/donation_history_view.dart';
+import 'package:lifelink/app/modules/message/views/message_view.dart';
 import 'package:super_ui_kit/super_ui_kit.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 
@@ -18,7 +22,7 @@ class HomeView extends GetView<HomeController> {
     return CSHomeWidget(
       floatingActionButton: CSIconButton(
         icon: Icons.add_sharp,
-        onTap: () => {},
+        onTap: () => Get.toNamed(Routes.DONATION_REQUEST),
       ),
       bottomNavigationBar: Obx(
         () => ClipRRect(
@@ -47,8 +51,8 @@ class HomeView extends GetView<HomeController> {
                   filledIcon: Icons.water_drop_sharp,
                   outlinedIcon: Icons.water_drop_outlined),
               BarItem(
-                  filledIcon: Icons.notification_important_sharp,
-                  outlinedIcon: Icons.notification_important_outlined),
+                  filledIcon: Icons.message,
+                  outlinedIcon: Icons.messenger_outline_rounded),
               BarItem(
                 filledIcon: Icons.settings,
                 outlinedIcon: Icons.settings_outlined,
@@ -64,6 +68,14 @@ class HomeView extends GetView<HomeController> {
           Container(
             alignment: Alignment.center,
             child: DashboardView(),
+          ),
+          Container(
+            alignment: Alignment.center,
+            child: DonationDashboardView(),
+          ),
+          Container(
+            alignment: Alignment.center,
+            child: MessageView(),
           ),
           Container(
             alignment: Alignment.center,

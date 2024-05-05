@@ -18,13 +18,13 @@ class SettingView extends GetView<SettingController> {
             child: CSText.title('Settings'),
           ),
           verticalSpaceRegular,
-          CsSettingItem(
-            onTap: () {
-              controller.gotoProfile();
-            },
-            title: 'Profile',
-            iconData: Icons.account_circle_sharp,
-          ),
+          // CsSettingItem(
+          //   onTap: () {
+          //     controller.gotoProfile();
+          //   },
+          //   title: 'Profile',
+          //   iconData: Icons.account_circle_sharp,
+          // ),
           CsSettingItem(
             onTap: () {
               controller.gotoDonationHistory();

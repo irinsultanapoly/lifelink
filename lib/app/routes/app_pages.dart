@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:lifelink/app/modules/chat/bindings/chat_binding.dart';
+import 'package:lifelink/app/modules/chat/views/chat_view.dart';
 
 import '../modules/address/bindings/address_binding.dart';
 import '../modules/address/views/address_view.dart';
@@ -80,6 +82,11 @@ class AppPages {
       name: _Paths.DONATION_REQUEST,
       page: () => const DonationRequestView(),
       binding: DonationRequestBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHAT,
+      page: () => const ChatView(),
+      binding: ChatBinding(),
     )
   ];
 }

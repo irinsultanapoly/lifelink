@@ -16,6 +16,7 @@ abstract class Routes {
   static const DONATION = _Paths.DONATION;
   static const DONATION_HISTORY = _Paths.DONATION_HISTORY;
   static const DONATION_REQUEST = _Paths.DONATION_REQUEST;
+  static const CHAT = _Paths.CHAT;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const DONATION = '/donation';
   static const DONATION_HISTORY = '/donation-history';
   static const DONATION_REQUEST = '/donation-request';
+  static const CHAT = '/chat';
 }

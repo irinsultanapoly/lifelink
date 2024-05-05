@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifelink/app/data/data_keys.dart';
 import 'package:super_ui_kit/super_ui_kit.dart';
 import 'app/routes/app_pages.dart';
 import 'app/services/db_service.dart';
@@ -29,9 +30,9 @@ Future<void> main() async {
       translationsKeys: AppTranslation.translations,
       locale: locale,
       fallbackLocale: kFallbackLocale,
-      initialRoute: true
-          ? AppPages.INITIAL
-          : Routes.HOME,
+      initialRoute: GetStorage().read(kKeyUserId) != null ?? false
+          ? Routes.HOME
+          : AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: appThemeLight,
       darkTheme: appDarkTheme,

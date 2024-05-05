@@ -1,10 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_ui_kit/super_ui_kit.dart';
-import '../controllers/donation_history_controller.dart';
-import 'donation_item.dart';
+import 'package:lifelink/app/modules/chat/views/chat_item.dart';
 
-class DonationHistoryView extends GetView<DonationHistoryController> {
-  const DonationHistoryView({Key? key}) : super(key: key);
+import 'package:super_ui_kit/super_ui_kit.dart';
+
+import '../controllers/chat_controller.dart';
+
+class ChatView extends GetView<ChatController> {
+  const ChatView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return CSHomeWidget(
@@ -12,22 +16,28 @@ class DonationHistoryView extends GetView<DonationHistoryController> {
       child: Column(
         children: [
           CSHeader(
-            title: 'donation_history_title'.tr,
+            title: 'Messages',
           ),
           verticalSpaceSmall,
+          Row(
+            children: [
+              Expanded(
+                flex: 4,
+                  child: CSInputField(controller: controller.tcMessage)),
+              Expanded(child: CSButton(title: "SEND", onTap: ()=> controller.sendMessage(),))
+            ],
+          ),
           Expanded(
             child: Obx(
               () => LiveList.options(
                 shrinkWrap: true,
                 physics: const ClampingScrollPhysics(),
                 itemBuilder: animationItemBuilder(
-                  (index) => DonationItem(
-                    controller.donations[index],
-                    onTap: () => controller.viewDonationDetail(index),
+                  (index) => ChatItem(
+                    controller.chats[index],
                   ),
                 ),
-                itemCount:
-                    controller.donations.length,
+                itemCount: controller.chats.length,
                 options: kAnimationOptions,
               ),
             ),

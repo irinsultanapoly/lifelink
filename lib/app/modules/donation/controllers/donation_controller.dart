@@ -1,32 +1,31 @@
-import 'package:get/get.dart';
+import 'package:lifelink/app/data/data_keys.dart';
+import 'package:lifelink/app/data/models/models.dart';
+import 'package:lifelink/app/routes/app_pages.dart';
+import 'package:lifelink/app/services/db_service.dart';
+import 'package:super_ui_kit/super_ui_kit.dart';
+
+enum DonationStatus { inprogress, accepted, completed, rejected }
 
 class DonationController extends GetxController {
+  final donation = BloodRequest(-1,
+          requestType: "",
+          bloodGroup: "",
+          amount: 0,
+          pName: "",
+          hospital: "",
+          donationDate: "",
+          donationTime: "",
+          isCritical: false,
+          requesterId: "",
+          status: "")
+      .obs;
+
   final editMode = false.obs;
 
-  // final donation = Donation(
-  //   ObjectId(),
-  //   "A34D4443DA",
-  //   "A34D4443DA",
-  //   DateTime.now(),
-  //   neededAt: DateTime.now(),
-  //   bloodGroup: "O+",
-  //   patientProblem: "Dengue",
-  //   amount: 2,
-  //   address: Address(
-  //     "Alice",
-  //     "01200300400",
-  //     division: "DHAKA",
-  //     city: "DHAKA",
-  //     area: "GULSHAN",
-  //     addressLine: "Bed#23, Badda General Hospital",
-  //     location: Location(lat: "23.793289", lon: "90.414129"),
-  //   ),
-  //   seekerInfo: UserInfo("Alice", "01200300400"),
-  //   donorInfo: UserInfo("Bob", "01200300200"),
-  // ).obs;
   @override
   void onInit() {
     super.onInit();
+    getDonationInfo();
   }
 
   @override
@@ -40,4 +39,44 @@ class DonationController extends GetxController {
   }
 
   saveDonationData() {}
+
+  void getDonationInfo() {
+    var donationId = GetStorage().read(kKeyDonationId);
+    if (donationId == null) return;
+    Get.find<DbService>().getBloodRequestById(donationId).then((value) {
+      if (value == null) {
+        Get.showDialog("Error getting donation info!", onConfirm: () {
+          Get.back(); //Close Dialog
+          Get.back();
+        }, dialogType: DialogType.error);
+      } else {
+        donation.value = value;
+      }
+    });
+  }
+
+  acceptDonationReq() {
+    var donorId = GetStorage().read(kKeyUserId);
+    if (donorId == null) return;
+    Get.find<DbService>()
+        .acceptBloodReq(donation.value.id, donorId)
+        .then((value) {
+      Get.showDialog("Thank you for saving life");
+      getDonationInfo();
+    });
+  }
+
+  gotoMessage() async {
+    var coversationId = await Get.find<DbService>().getConversation(
+        donation.value.requesterId, donation.value.donorId ?? '');
+    if (coversationId == null) {
+      Get.find<DbService>()
+          .createConversation(
+              donation.value.requesterId, donation.value.donorId ?? '')
+          .then((value) => gotoMessage());
+    } else {
+      GetStorage().write(kKeyConversationId, coversationId);
+      Get.toNamed(Routes.CHAT);
+    }
+  }
 }

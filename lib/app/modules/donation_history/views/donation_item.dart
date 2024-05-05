@@ -1,8 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
+import 'package:lifelink/app/data/models/models.dart';
+import 'package:lifelink/app/services/db_service.dart';
 import 'package:super_ui_kit/super_ui_kit.dart';
-
 
 const kAddressCardItemCornerRadius = 10.0;
 const kAddressCardItemsPaddingV = 10.0;
@@ -11,19 +12,19 @@ const kAddressCardItemHeaderHeight = 35.0;
 class DonationItem extends GetView {
   final cornerRadius = 10.0;
 
-  final String donation;
+  final BloodRequest donation;
   final Function()? onTap;
   final Function()? onDefaultIconTap;
   final Function()? onEditIconTap;
 
   const DonationItem(
-    this.donation,
-      {
+    this.donation, {
     super.key,
     this.onTap,
     this.onDefaultIconTap,
     this.onEditIconTap,
   });
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -69,7 +70,7 @@ class DonationItem extends GetView {
                               child: Align(
                                 alignment: Alignment.center,
                                 child: CSText.headline(
-                                  "donation.reqType",
+                                  donation.requestType,
                                   color: Get.theme.colorScheme.onPrimary,
                                 ),
                               ),
@@ -125,7 +126,7 @@ class DonationItem extends GetView {
                         Expanded(
                           flex: 2,
                           child: CSText(
-                            "donation.amount".toString(),
+                            donation.amount.toString(),
                           ),
                         ),
                       ],
@@ -146,7 +147,7 @@ class DonationItem extends GetView {
                         ),
                         Expanded(
                           flex: 2,
-                          child: CSText("donation.bloodGroup"),
+                          child: CSText(donation.bloodGroup),
                         ),
                       ],
                     ),
@@ -165,9 +166,25 @@ class DonationItem extends GetView {
                           child: CSText(
                               "donation_history_item_label_seeker_name".tr),
                         ),
-                        Expanded(
-                          flex: 2,
-                          child: CSText("donation.seekerInfo?.name" ?? ''),
+                        FutureBuilder<User?>(
+                          future: Get.find<DbService>()
+                              .findUserByMobile(donation.requesterId),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const CircularProgressIndicator(); // Show a loading indicator while fetching data
+                            } else if (snapshot.hasError) {
+                              return Text(
+                                  'Error: ${snapshot.error}'); // Show an error message if fetching data fails
+                            } else {
+                              final user = snapshot.data;
+                              return Expanded(
+                                flex: 2,
+                                child: CSText(user?.name ??
+                                    ''), // Display user name if available
+                              );
+                            }
+                          },
                         ),
                       ],
                     ),
@@ -188,7 +205,7 @@ class DonationItem extends GetView {
                         ),
                         Expanded(
                           flex: 2,
-                          child: CSText("donation.patientProblem"),
+                          child: CSText(donation.pProblem ?? ''),
                         ),
                       ],
                     ),
@@ -206,7 +223,7 @@ class DonationItem extends GetView {
                         ),
                         Expanded(
                           flex: 2,
-                          child: CSText("donation.address?.addressLine" ?? ""),
+                          child: CSText(donation.hospital ?? ""),
                         ),
                       ],
                     ),
@@ -221,7 +238,7 @@ class DonationItem extends GetView {
                           child: Align(
                             alignment: Alignment.centerRight,
                             child: CSText(
-                              "donation.neededAt.formatCustom(kDonationDateFormat)",
+                              "${donation.donationDate} ${donation.donationTime}",
                             ),
                           ),
                         ),

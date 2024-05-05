@@ -181,6 +181,7 @@ class AuthController extends GetxController {
         if (isValidUser) {
           Get.hideLoader();
           Get.showAppSnackbar("Login success!");
+          _box.write(kKeyUserId, tcUserMobile.text);
           Get.toNamed(Routes.HOME);
         } else {
           Get.hideLoader();
@@ -202,6 +203,7 @@ class AuthController extends GetxController {
               .then((value) {
             Get.hideLoader();
             Get.showAppSnackbar("User creation success!");
+            _box.write(kKeyUserId, tcUserMobile.text);
             Get.toNamed(Routes.HOME);
           }).onError((error, stackTrace) {
             printError(info: '$error');
